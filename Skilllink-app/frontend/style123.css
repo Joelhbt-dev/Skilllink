@@ -1,0 +1,431 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    /* Brand Colors */
+    --primary-color: #2a9d8f;       /* Teal */
+    --primary-hover: #264653;       /* Dark Blue/Green */
+    
+    /* Text Colors */
+    --text-dark: #343a40;
+    --text-medium: #495057;
+    --text-muted: #6c757d;
+    
+    /* Backgrounds & Borders */
+    --bg-body: #f8f9fa;
+    --bg-white: #ffffff;
+    --border-color: #e9ecef;
+    --border-input: #ced4da;
+    
+    /* Spacing & Effects */
+    --border-radius: 6px;
+    --border-radius-lg: 12px;
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 6px 15px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.08);
+    --font-main: 'Inter', sans-serif;
+}
+
+/* Global Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* =========================================
+   2. GENERAL BODY STYLES
+   ========================================= */
+body {
+    font-family: var(--font-main);
+    margin: 0;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--border-color);
+}
+::-webkit-scrollbar-thumb {
+    background: #adb5bd;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* =========================================
+   3. NAVIGATION BAR (Updated for Alignment)
+   ========================================= */
+.navbar {
+    background-color: var(--bg-white);
+    /* SMART PADDING: 
+       This ensures the logo and buttons align with your main container (1000px),
+       so they don't drift too far to the edges on wide screens.
+    */
+    padding: 1rem max(2rem, calc(50% - 500px));
+    
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.navbar .nav-links a {
+    color: var(--text-medium);
+    text-decoration: none;
+    
+    /* REDUCED MARGIN: Brings "Jobs" and "Login" closer together */
+    margin-left: 1rem; 
+    
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   4. LAYOUT & HEADERS
+   ========================================= */
+.container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    color: var(--primary-hover);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+h2 {
+    color: var(--primary-hover);
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* =========================================
+   5. FORMS
+   ========================================= */
+.form-container {
+    background: var(--bg-white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 500px;
+    margin: 2.5rem auto;
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    font-size: 1.05rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border-input);
+    border-radius: var(--border-radius);
+    font-size: 1.05rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(42, 157, 143, 0.25);
+    outline: none;
+}
+
+/* =========================================
+   6. BUTTONS
+   ========================================= */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1.1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   7. JOB CARDS
+   ========================================= */
+.job-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.8rem;
+}
+
+.job-card {
+    background: var(--bg-white);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.job-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.job-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.job-card p {
+    margin-bottom: 0.6rem;
+    color: var(--text-medium);
+    font-size: 1.05rem;
+}
+
+.job-card p strong {
+    color: var(--text-dark);
+}
+
+/* =========================================
+   8. INFO & WELCOME BOXES
+   ========================================= */
+.info-box {
+    background-color: var(--border-color);
+    color: var(--primary-hover);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    margin-bottom: 3rem;
+    border: 1px solid #dee2e6;
+    box-shadow: var(--shadow-sm);
+}
+
+.info-box h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-box p {
+    font-size: 1.15rem;
+    color: var(--text-medium);
+}
+
+.home-welcome {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.home-welcome p {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 1.5rem auto 3rem auto;
+}
+
+.home-welcome .btn {
+    width: auto;
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+    border-radius: 8px;
+}
+
+/* =========================================
+   9. APPLICATION & RESUME FEATURES
+   ========================================= */
+.btn-apply, .btn-applied {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-apply {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-apply:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-applied {
+    background-color: var(--border-color);
+    color: var(--text-muted);
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.applicants-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.applicants-section h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-hover);
+}
+
+.applicants-section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.applicants-section li {
+    background-color: var(--bg-body);
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.apply-form {
+    margin-top: 1rem;
+}
+
+.resume-input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-input);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.8rem;
+    background: #fff;
+    height: 45px;
+    line-height: 1.5;
+}
+
+.resume-input::file-selector-button {
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: var(--border-color);
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-right: 1rem;
+}
+
+.resume-input::file-selector-button:hover {
+    background-color: #dee2e6;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    background-color: var(--primary-hover);
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-download:hover {
+    background-color: var(--primary-color);
+}
+
+/* =========================================
+   10. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .navbar .nav-links {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .navbar .nav-links a {
+        /* Mobile: Keep them nicely spaced but not too far */
+        margin: 0.5rem 0.8rem;
+    }
+
+    .container {
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .btn, .btn-apply, .btn-download {
+        padding: 1rem; 
+    }
+}

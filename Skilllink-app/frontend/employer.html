@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - Skill Link</title>
+    <link rel="stylesheet" href="style123.css">
+</head>
+<body id="employer-page">
+    <nav class="navbar">
+        <a href="index.html" class="logo">Skill Link</a>
+        <div class="nav-links" id="nav-links"></div>
+    </nav>
+    <div class="container">
+        
+        <h1 id="welcome-message">Employer Dashboard</h1>
+        
+        <div class="form-container">
+            <h2>Post a New Job</h2>
+            <form id="post-job-form">
+                <div class="form-group">
+                    <label for="job-title">Job Title</label>
+                    <input type="text" id="job-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="job-location">Location</label>
+                    <input type="text" id="job-location" required>
+                </div>
+                <div class="form-group">
+                    <label for="job-description">Job Description</label>
+                    <textarea id="job-description" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Post Job</button>
+            </form>
+        </div>
+
+        <h2>Your Posted Jobs</h2>
+        <div id="posted-jobs-list"> 
+            </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
